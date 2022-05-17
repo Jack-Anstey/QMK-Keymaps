@@ -9,7 +9,13 @@ This also has a RGB matrix with the color purple.
 
 Enjoy!
 
-V1.0
+V1.1
+*/
+
+/*
+Sidenote, if you try to reflash and its not updating, make sure to clear the keyboards EEPROM.
+Use the bootmagic escape; unplug the board, press and hold escape as you plug it back in, then release and unplug/replug.
+Should fix it in a jiffy
 */
 
 #include QMK_KEYBOARD_H
@@ -32,30 +38,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // To put the keyboard in bootloader mode, use FN+ESC. If you accidentally put it into bootloader, you can just unplug the USB cable and
     // it'll be back to normal when you plug it back in.
     [0] = LAYOUT(
-        KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_MPLY,          KC_SLEP,
+        KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_MPLY,          KC_MUTE,
         KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS, KC_EQL,  KC_BSPC,          KC_DEL,
         KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,          KC_PGUP,
-        MO(2), KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,           KC_PGDN,
+        MO(2),   KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,          KC_ENT,           KC_PGDN,
         KC_LSFT,          KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,          KC_RSFT, KC_UP,   KC_END,
         KC_LCTL, KC_LGUI, KC_LALT,                            KC_SPC,                             KC_RALT, MO(1),   KC_RCTL, KC_LEFT, KC_DOWN, KC_RGHT
     ),
 
     [1] = LAYOUT(
-        RESET, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_PSCR,          _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_TRNS,          RGB_M_B,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          RGB_VAI,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,          RGB_VAD,
+        RESET,   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_PSCR,          KC_SLEP,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_TRNS,          KC_HOME,
+        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          KC_NO,
+        _______, KC_MPRV, KC_MPLY, KC_MNXT, _______, _______, _______, _______, _______, _______, _______, _______,          _______,          KC_NO,
         _______,          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______, RGB_TOG,
-        _______, _______, _______,                            _______,                            _______, _______, _______, KC_MPRV, _______, KC_MNXT
+        _______, _______, _______,                            _______,                            _______, _______, _______, KC_MPRV, KC_MPLY, KC_MNXT
     ),
 
     [2] = LAYOUT(
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_PSCR,          _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_TRNS,          _______,
-        _______, _______, _______, _______, _______, _______, _______, KC_7, KC_8, KC_9,  _______,_______, _______, _______,          _______,
-        _______, KC_MPRV, _______, KC_MNXT, _______, _______, _______, KC_4, KC_5, KC_6 , _______, _______,          _______,          _______,
-        _______,          _______, _______, _______, _______, _______, _______,KC_1, KC_2, KC_3, _______,          _______, _______, _______,
-        _______, _______, _______,                            KC_0,                            _______, _______, _______, KC_MPRV, _______, KC_MNXT
+        _______, _______, _______, _______, _______, _______, _______, KC_7,    KC_8,    KC_9,    _______, _______, _______, _______,          _______,
+        _______, KC_MPRV, KC_MPLY, KC_MNXT, _______, _______, _______, KC_4,    KC_5,    KC_6,    _______, _______,          _______,          _______,
+        _______,          _______, _______, _______, _______, _______, _______, KC_1,    KC_2,    KC_3,    _______,          _______, _______, _______,
+        _______, _______, _______,                            KC_0,                               _______, _______, _______, KC_MPRV, KC_MPLY, KC_MNXT
     ),
 
     //this empty layer is so that this keymap will work with VIA
@@ -71,47 +77,66 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
-/*
-Knob default as I don't have a use for multiple layers...yet
-Currently just changes the brightness of RGB leds
-tapcode_16 for greater compatabilty
-*/
+static uint16_t key_timer;
+
+#ifdef ENCODER_ENABLE
 bool encoder_update_user(uint8_t index, bool clockwise) {
+    if (index == 0) {
+        switch(biton32(layer_state)){
+            case 1: // layer 1 (fn)
+                if (clockwise){
+                    tap_code16(KC_BRIU); //Brightness up and down
+                } else{
+                    tap_code16(KC_BRID);
+                }
+                break;
+            case 2: // layer 2 (caps lock)
+                if (clockwise) {
+                    tap_code16(C(KC_TAB)); //cycle through tabs in web browser
+                } else {
+                    tap_code16(S(C(KC_TAB)));
+                }
+                break;
+            case 3: // layer 3 (undefined currently)
+                if (clockwise) {
+                    tap_code16(KC_BRMU); // MacOS Brightness up and down
+                } else {
+                    tap_code16(KC_BRMD);
+                }
+                break;
+            default:
+                // if (clockwise) { //basic version
+                //     tap_code16(KC_VOLU); //volume up and down for layer 0
+                // } else {
+                //     tap_code16(KC_VOLD);
+                // }
+                // break;
 
-    if (clockwise) {
-      tap_code16(RGB_VAI);
-    } else {
-      tap_code16(RGB_VAD);
-    }
-    return true;
-}
-
-/*
-knob for multiple layers
-
-bool encoder_update_user(uint8_t index, bool clockwise) {
-  if (index == 0) {
-    switch(biton32(layer_state)){
-        case 1:
-            if (clockwise){
-                tap_code16(C(KC_TAB));
-            } else{
-                tap_code16(S(C(KC_TAB)));
-            }
-            break;
-        default:
-            if (clockwise) {
-                tap_code16(KC_WH_D);
-            } else {
-                tap_code16(KC_WH_U);
-            }
-            break;
+                if (clockwise) {
+                    tap_code16(KC_VOLU);
+                    if (timer_elapsed(key_timer) < 100) {
+                        tap_code16(KC_VOLU); // if less than 100ms have passed, hit vol down twice.
+                        tap_code16(KC_VOLU);
+                        key_timer = timer_read();
+                    } else {
+                        key_timer = timer_read(); // do nothing if 100ms or more have passed
+                    }
+                } else {
+                    tap_code16(KC_VOLD);
+                    if (timer_elapsed(key_timer) < 100) {
+                        tap_code16(KC_VOLD); // if less than 100ms have passed, hit vol down twice.
+                        tap_code16(KC_VOLD);
+                        key_timer = timer_read();
+                    } else {
+                        key_timer = timer_read(); // do nothing if 100ms or more have passed
+                    }
+                }
+                break;
         }
     }
-    return true;
+    return false; //gets rid of the default volume behavior
 }
-*/
-
+#endif // ENCODER_ENABLE
 
 // RGB LED layout
 
@@ -139,6 +164,11 @@ void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
                 rgb_matrix_set_color(95, rgbColors[0], rgbColors[1], rgbColors[2]);
                 rgb_matrix_set_color(97, rgbColors[0], rgbColors[1], rgbColors[2]);
                 rgb_matrix_set_color(79, rgbColors[0], rgbColors[1], rgbColors[2]); //arrows | up, down, left, right
+
+                rgb_matrix_set_color(9, rgbColors[0], rgbColors[1], rgbColors[2]); //a
+                rgb_matrix_set_color(21, rgbColors[0], rgbColors[1], rgbColors[2]); //d
+
+                 rgb_matrix_set_color(11, rgbColors[0], rgbColors[1], rgbColors[2]); //windows key (left)
 
                 rgb_matrix_set_color(69, rgbColors[0], rgbColors[1], rgbColors[2]); //print (nice)
 
