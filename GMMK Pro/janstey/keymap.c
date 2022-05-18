@@ -115,7 +115,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 if (clockwise) {
                     tap_code16(KC_VOLU);
                     if (timer_elapsed(key_timer) < 100) {
-                        tap_code16(KC_VOLU); // if less than 100ms have passed, hit vol down twice.
+                        tap_code16(KC_VOLU); // if less than 100ms have passed, hit vol up twice.
                         tap_code16(KC_VOLU);
                         key_timer = timer_read();
                     } else {
