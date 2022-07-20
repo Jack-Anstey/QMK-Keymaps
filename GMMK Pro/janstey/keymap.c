@@ -59,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_PSCR,          _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_TRNS,          _______,
         _______, _______, KC_CAPS, _______, _______, _______, _______, KC_7,    KC_8,    KC_9,    _______, _______, _______, _______,          _______,
-        _______, KC_MPRV, KC_MPLY, KC_MNXT, _______, _______, _______, KC_4,    KC_5,    KC_6,    _______, _______,          _______,          _______,
+        _______, KC_MPRV, KC_MPLY, KC_MNXT, KC_CAPS, _______, _______, KC_4,    KC_5,    KC_6,    _______, _______,          _______,          _______,
         _______,          _______, _______, _______, _______, _______, _______, KC_1,    KC_2,    KC_3,    _______,          _______, _______, _______,
         _______, _______, _______,                            KC_0,                               _______, _______, _______, KC_MPRV, KC_MPLY, KC_MNXT
     ),
@@ -167,12 +167,18 @@ void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 
                 rgb_matrix_set_color(9, rgbColors[0], rgbColors[1], rgbColors[2]); //a
                 rgb_matrix_set_color(21, rgbColors[0], rgbColors[1], rgbColors[2]); //d
+                rgb_matrix_set_color(15, rgbColors[0], rgbColors[1], rgbColors[2]); //s
 
-                 rgb_matrix_set_color(11, rgbColors[0], rgbColors[1], rgbColors[2]); //windows key (left)
+                rgb_matrix_set_color(11, rgbColors[0], rgbColors[1], rgbColors[2]); //windows key (left)
 
                 rgb_matrix_set_color(69, rgbColors[0], rgbColors[1], rgbColors[2]); //print (nice)
 
                 rgb_matrix_set_color(0, rgbColors[0], rgbColors[1], rgbColors[2]); //esc for reset
+
+                rgb_matrix_set_color(72, rgbColors[0], rgbColors[1], rgbColors[2]); //Buttons below the knob
+                rgb_matrix_set_color(75, rgbColors[0], rgbColors[1], rgbColors[2]);
+                rgb_matrix_set_color(86, rgbColors[0], rgbColors[1], rgbColors[2]); 
+                rgb_matrix_set_color(82, rgbColors[0], rgbColors[1], rgbColors[2]); 
 
                 rgb_matrix_set_color(67, rgbColors[0], rgbColors[1], rgbColors[2]); 
                 rgb_matrix_set_color(70, rgbColors[0], rgbColors[1], rgbColors[2]); 
@@ -220,6 +226,7 @@ void rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
                 rgb_matrix_set_color(21, rgbColors[0], rgbColors[1], rgbColors[2]); //d
                 rgb_matrix_set_color(15, rgbColors[0], rgbColors[1], rgbColors[2]); //s
                 rgb_matrix_set_color(14, rgbColors[0], rgbColors[1], rgbColors[2]); //w
+                rgb_matrix_set_color(26, rgbColors[0], rgbColors[1], rgbColors[2]); //f
 
                 rgb_matrix_set_color(67, rgbColors[0], rgbColors[1], rgbColors[2]); 
                 rgb_matrix_set_color(70, rgbColors[0], rgbColors[1], rgbColors[2]); 
