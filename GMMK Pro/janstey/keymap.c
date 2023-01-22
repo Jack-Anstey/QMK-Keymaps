@@ -84,17 +84,25 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
         switch(biton32(layer_state)){
             case 1: // layer 1 (fn)
-                if (clockwise){
-                    tap_code16(KC_BRIU); //Brightness up and down
-                } else{
-                    tap_code16(KC_BRID);
-                }
-                break;
-            case 2: // layer 2 (caps lock)
                 if (clockwise) {
                     tap_code16(C(KC_TAB)); //cycle through tabs in web browser
                 } else {
                     tap_code16(S(C(KC_TAB)));
+                }
+                break;
+            case 2: // layer 2 (caps lock)
+                if (clockwise) {
+                    tap_code16(KC_F24); //Brightness up and down (using Twinkle Tray shortcuts)
+                    if (timer_elapsed(key_timer) < 100) {
+                        tap_code16(KC_F24); //if less than 100ms have passed, do it again
+                    }
+                    key_timer = timer_read(); //reset the time
+                } else {
+                     tap_code16(KC_F23); //Brightness up and down (using Twinkle Tray shortcuts)
+                    if (timer_elapsed(key_timer) < 100) {
+                        tap_code16(KC_F23); //if less than 100ms have passed, do it again
+                    }
+                    key_timer = timer_read(); //reset the time
                 }
                 break;
             case 3: // layer 3 (undefined currently)
@@ -105,31 +113,20 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
                 }
                 break;
             default:
-                // if (clockwise) { //basic version
-                //     tap_code16(KC_VOLU); //volume up and down for layer 0
-                // } else {
-                //     tap_code16(KC_VOLD);
-                // }
-                // break;
-
                 if (clockwise) {
                     tap_code16(KC_VOLU);
                     if (timer_elapsed(key_timer) < 100) {
                         tap_code16(KC_VOLU); // if less than 100ms have passed, hit vol down twice.
                         tap_code16(KC_VOLU);
-                        key_timer = timer_read();
-                    } else {
-                        key_timer = timer_read(); // do nothing if 100ms or more have passed
                     }
+                    key_timer = timer_read(); // reset timer
                 } else {
                     tap_code16(KC_VOLD);
                     if (timer_elapsed(key_timer) < 100) {
                         tap_code16(KC_VOLD); // if less than 100ms have passed, hit vol down twice.
                         tap_code16(KC_VOLD);
-                        key_timer = timer_read();
-                    } else {
-                        key_timer = timer_read(); // do nothing if 100ms or more have passed
                     }
+                    key_timer = timer_read(); // do nothing if 100ms or more have passed
                 }
                 break;
         }
